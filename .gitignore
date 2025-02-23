@@ -1,0 +1,10 @@
+.idea
+*.iml
+out
+gen
+__pycache__
+in_source
+vevn/
+venv
+db
+Downloads
