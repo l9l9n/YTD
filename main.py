@@ -29,30 +29,37 @@ def download_mp3(link):
         print(f"Произошла ошибка при скачивании MP3: {e}")
 
 def download_video(link):
-    yt = YouTube(link)
-    video = yt.streams.get_highest_resolution()
+    try:
+        yt = YouTube(link)
+        video = yt.streams.get_highest_resolution()
 
-    folder_name = create_download_folder()
+        folder_name = create_download_folder()
 
-    # Загрузка видео в созданную папку
-    print("----- Loading Video -----")
-    video_file = video.download(output_path=folder_name)
-    
-    print(f"Видео сохранено: {video_file}")
-    print("--- End loading Video ---")
+        # Загрузка видео в созданную папку
+        print("----- Loading Video -----")
+        video_file = video.download(output_path=folder_name)
+        
+        print(f"Видео сохранено: {video_file}")
+        print("--- End loading Video ---")
+    except Exception as e:
+        print(f"Произошла ошибка при скачивании видео: {e}")
 
 if __name__ == '__main__':
-    print("Введите ссылку на видео с YouTube.")
-    link = input("Введите ссылку: ")
-    print("Выберите действие: '1' для скачивания MP3 или '2' для скачивания видео.")
-    print("--- Start ---")
-    choice = input("Введите '1' для скачивания MP3 или '2' для скачивания видео: ")
-    if choice == '1':
-        download_mp3(link)
-    elif choice == '2':
-        download_video(link)
-    else:
-        print("Неверный выбор!")
+    while True:
+        print("Введите ссылку на видео с YouTube.")
+        link = input("Введите ссылку: ").strip()
+        print("Выберите действие: '1' для скачивания MP3 или '2' для скачивания видео.")
+        choice = input("Введите '1' для скачивания MP3 или '2' для скачивания видео (или 'q' для выхода): ").strip()
+
+        if choice == '1':
+            download_mp3(link)
+        elif choice == '2':
+            download_video(link)
+        elif choice.lower() == 'q':
+            print("Выход из программы. До свидания!")
+            break
+        else:
+            print("Неверный выбор! Попробуйте снова.")
 
 
 
