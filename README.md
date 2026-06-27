@@ -59,10 +59,10 @@ BOT_TOKEN=ваш_токен_от_BotFather
 ### Вариант A — через Python (вручную)
 
 ```bash
-python -m venv env1
-env1\Scripts\activate        # Windows
+python -m venv venv
+venv\Scripts\activate        # Windows
 # или
-source env1/bin/activate     # Linux / macOS
+source venv/bin/activate     # Linux / macOS
 
 pip install -r requirements.txt
 ```
