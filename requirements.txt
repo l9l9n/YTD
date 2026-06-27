@@ -1,1 +1,4 @@
-pytubefix==8.12.1
+pytubefix>=10.10.1
+aiogram>=3.0,<4.0
+python-dotenv>=1.0
+mutagen>=1.47

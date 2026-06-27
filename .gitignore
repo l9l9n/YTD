@@ -5,6 +5,9 @@ gen
 __pycache__
 in_source
 vevn/
-venv
+venv/
+env1/
 db
-Downloads_file
+Downloads/
+Downloads_*/
+.env

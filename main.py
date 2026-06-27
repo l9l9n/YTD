@@ -4,14 +4,14 @@ from datetime import datetime
 from pytubefix import YouTube
 
 def create_download_folder():
-    folder_name = f"Downloads_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+    folder_name = os.path.join("Downloads", f"Downloads_{datetime.now().strftime('%d_%m_%Y')}")
     os.makedirs(folder_name, exist_ok=True)
     print(f"Файлы будут сохранены в папке: {folder_name}")
     return folder_name
 
 def download_mp3(link):
     try:
-        yt = YouTube(link)
+        yt = YouTube(link, client="WEB")
         video = yt.streams.get_audio_only()
 
         folder_name = create_download_folder()
@@ -30,7 +30,7 @@ def download_mp3(link):
 
 def download_video(link):
     try:
-        yt = YouTube(link)
+        yt = YouTube(link, client="WEB")
         video = yt.streams.get_highest_resolution()
 
         folder_name = create_download_folder()
@@ -46,7 +46,7 @@ def download_video(link):
 
 if __name__ == '__main__':
     while True:
-        print("Введите ссылку на видео с YouTube.")
+        print("Введите ссылку с YouTube'a.")
         link = input("Введите ссылку: ").strip()
         print("Выберите действие: '1' для скачивания MP3 или '2' для скачивания видео.")
         choice = input("Введите '1' для скачивания MP3 или '2' для скачивания видео (или 'q' для выхода): ").strip()
